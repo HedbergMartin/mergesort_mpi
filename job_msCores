@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH -A pb
+#SBATCH -n 128
+#SBATCH --tasks-per-node=32
+#SBATCH --time=00:30:00 
+#SBATCH --error=cores.err
+#SBATCH --output=cores.out
+
+module add foss/2019b
+
+mpirun -np 1 ./mergesortCores
+mpirun -np 2 ./mergesortCores
+mpirun -np 4 ./mergesortCores
+mpirun -np 8 ./mergesortCores
+mpirun -np 16 ./mergesortCores
+mpirun -np 32 ./mergesortCores
+mpirun -np 64 ./mergesortCores
+mpirun -np 128 ./mergesortCores
+

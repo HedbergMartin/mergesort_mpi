@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH -A pb
+#SBATCH -n 32
+#SBATCH --tasks-per-node=32
+#SBATCH --time=00:30:00 
+#SBATCH --error=sizes.err
+#SBATCH --output=sizes.out
+
+module add foss/2019b
+
+mpirun ./mergesortSizes
+
