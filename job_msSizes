@@ -8,5 +8,5 @@
 
 module add foss/2019b
 
-mpirun ./mergesortSizes
+mpirun ./mergesort 8 3200000
 

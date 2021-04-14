@@ -8,12 +8,12 @@
 
 module add foss/2019b
 
-mpirun -np 1 ./mergesortCores
-mpirun -np 2 ./mergesortCores
-mpirun -np 4 ./mergesortCores
-mpirun -np 8 ./mergesortCores
-mpirun -np 16 ./mergesortCores
-mpirun -np 32 ./mergesortCores
-mpirun -np 64 ./mergesortCores
-mpirun -np 128 ./mergesortCores
+mpirun -np 1 ./mergesort 1 120000000
+mpirun -np 2 ./mergesort 1 120000000
+mpirun -np 4 ./mergesort 1 120000000
+mpirun -np 8 ./mergesort 1 120000000
+mpirun -np 16 ./mergesort 1 120000000
+mpirun -np 32 ./mergesort 1 120000000
+mpirun -np 64 ./mergesort 1 120000000
+mpirun -np 128 ./mergesort 1 120000000
 

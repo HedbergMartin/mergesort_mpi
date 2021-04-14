@@ -6,6 +6,7 @@
 
 #include <math.h>
 
+void runTest(int n);
 double* serial_mergesort(double array[], int n);
 double* serial_merge(double array1[], int n1, double array2[], int n2);
 double* mergesort(double array[], int n);
@@ -21,7 +22,7 @@ void printArray(double x[], int n) {
 
 //Random double between 0-100;
 double rand_double() {
-	double r = (double)rand() / RAND_MAX; //Random between 0-1;
+	double r = (double)rand() / RAND_MAX;
 	return r*100;
 }
 
@@ -38,8 +39,19 @@ int main (int argc, char* argv[]) {
 		printf("Cores: %d\n", p);
 	}
 
+	int iter = atoi(argv[1]);
+	int n = atoi(argv[2]);
+	for (int i = 0; i < iter; i++) {
+		runTest(n);
+		n = n*2;
+	}
+
+	MPI_Finalize();
+	return 0;
+}
+
+void runTest(int n) {
 	double* array = NULL;
-	int n = atoi(argv[1]);
 
 	if (rank == 0) {
 		array = malloc(n * sizeof(double));
@@ -59,14 +71,11 @@ int main (int argc, char* argv[]) {
 				break;
 			}
 		}
-		printf("Took %lf seconds\n", end-start);
+		printf("%d	%lf\n", n, end-start);
 	}
 
 	free(array);
 	free(sArray);
-
-	MPI_Finalize();
-	return 0;
 }
 
 double* mergesort(double array[], int n) {
